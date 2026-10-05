@@ -5,15 +5,28 @@ const noteSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
+      trim: true, // Automatically trims whitespace from the beginning and end of the string
     },
     content: {
       type: String,
-      required: true,
+      default: '',
+      trim: true, // Automatically trims whitespace from the beginning and end of the string
     },
     tag: {
       type: String,
-      enum: ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'],
-      required: true,
+      enum: [
+        'Todo',
+        'Work',
+        'Personal',
+        'Meeting',
+        'Shopping',
+        'Ideas',
+        'Travel',
+        'Finance',
+        'Health',
+        'Important',
+      ],
+
       default: 'Todo',
     },
   },
