@@ -17,6 +17,7 @@ const noteSchema = new mongoose.Schema(
       type: String,
       enum: TAGS, // Restrict the tag to be one of the predefined tags
       default: 'Todo',
+      index: true, // Create an index on the tag field for faster queries
     },
   },
   {
