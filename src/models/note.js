@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { TAGS } from '../constants/tags.js';
 
 const noteSchema = new mongoose.Schema(
   {
@@ -14,19 +15,7 @@ const noteSchema = new mongoose.Schema(
     },
     tag: {
       type: String,
-      enum: [
-        'Todo',
-        'Work',
-        'Personal',
-        'Meeting',
-        'Shopping',
-        'Ideas',
-        'Travel',
-        'Finance',
-        'Health',
-        'Important',
-      ],
-
+      enum: TAGS, // Restrict the tag to be one of the predefined tags
       default: 'Todo',
     },
   },
