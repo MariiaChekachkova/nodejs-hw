@@ -29,5 +29,5 @@ const noteSchema = new mongoose.Schema(
     timestamps: true, // Automatically adds createdAt and updatedAt fields
   },
 );
-
+noteSchema.index({ tag: 1, userId: 1 }); // Create a text index on title and content for full-text search
 export const Note = mongoose.model('Note', noteSchema);
