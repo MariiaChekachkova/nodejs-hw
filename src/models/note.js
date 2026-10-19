@@ -19,6 +19,11 @@ const noteSchema = new mongoose.Schema(
       default: 'Todo',
       index: true, // Create an index on the tag field for faster queries
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User', // Reference to the User model
+      required: true,
+    },
   },
   {
     timestamps: true, // Automatically adds createdAt and updatedAt fields
