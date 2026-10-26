@@ -7,11 +7,16 @@ export const updateUserAvatar = async (req, res) => {
     throw createHttpError(400, 'No file');
   }
   const result = await saveFileToCloudinary(req.file.buffer, req.user._id);
-  await User.updateOne(
-    { _id: req.user._id },
-    { $set: { avatar: result.secure_url } },
+  const user = await User.findByIdAndUpdate(
+    req,
+    user._id,
+    { $set: { avatarUrl: result.secure_url } },
+    { returnDocument: 'after' },
   );
+  if (!user) {
+    throw createHttpError(404, 'User not found');
+  }
   res.status(200).json({
-    url: result.secure_url,
+    url: user.avatar,
   });
 };
